@@ -2,19 +2,19 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-31T12:16:33 IST" name="Default suite" finished-at="2024-10-31T12:16:37 IST" duration-ms="4489">
+  <suite started-at="2024-10-31T12:26:54 IST" name="Default suite" finished-at="2024-10-31T12:26:57 IST" duration-ms="3116">
     <groups>
     </groups>
-    <test started-at="2024-10-31T12:16:33 IST" name="Default test" finished-at="2024-10-31T12:16:37 IST" duration-ms="4489">
+    <test started-at="2024-10-31T12:26:54 IST" name="Default test" finished-at="2024-10-31T12:26:57 IST" duration-ms="3116">
       <class name="spotify.oauth2.tests.PlaylistTests">
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:spotify.oauth2.tests.PlaylistTests@16eb3ea3]" started-at="2024-10-31T12:16:33 IST" name="beforeClass" finished-at="2024-10-31T12:16:34 IST" duration-ms="842" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:spotify.oauth2.tests.PlaylistTests@273444fe]" started-at="2024-10-31T12:26:54 IST" name="beforeClass" finished-at="2024-10-31T12:26:55 IST" duration-ms="855" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="ShouldBeAbleToGetPlaylist()[pri:0, instance:spotify.oauth2.tests.PlaylistTests@16eb3ea3]" started-at="2024-10-31T12:16:34 IST" name="ShouldBeAbleToGetPlaylist" finished-at="2024-10-31T12:16:37 IST" duration-ms="3572" status="PASS">
+        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:spotify.oauth2.tests.PlaylistTests@273444fe]" started-at="2024-10-31T12:26:55 IST" name="ShouldBeAbleToUpdatePlaylist" finished-at="2024-10-31T12:26:57 IST" duration-ms="2192" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ShouldBeAbleToGetPlaylist -->
+        </test-method> <!-- ShouldBeAbleToUpdatePlaylist -->
       </class> <!-- spotify.oauth2.tests.PlaylistTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
