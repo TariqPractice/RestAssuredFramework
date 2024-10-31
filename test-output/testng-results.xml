@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-31T12:36:30 IST" name="Default suite" finished-at="2024-10-31T12:36:33 IST" duration-ms="3528">
+  <suite started-at="2024-10-31T13:42:10 IST" name="Default suite" finished-at="2024-10-31T13:42:14 IST" duration-ms="3534">
     <groups>
     </groups>
-    <test started-at="2024-10-31T12:36:30 IST" name="Default test" finished-at="2024-10-31T12:36:33 IST" duration-ms="3528">
-      <class name="spotify.oauth2.tests.PlaylistTests">
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T12:36:30 IST" name="beforeClass" finished-at="2024-10-31T12:36:30 IST" duration-ms="794" status="PASS">
+    <test started-at="2024-10-31T13:42:10 IST" name="Default test" finished-at="2024-10-31T13:42:14 IST" duration-ms="3534">
+      <class name="com.spotify.oauth2.tests.PlaylistTests">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T13:42:10 IST" name="beforeClass" finished-at="2024-10-31T13:42:11 IST" duration-ms="786" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithExpiredToken()[pri:0, instance:spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T12:36:30 IST" name="ShouldNotBeAbleToCreatePlaylistWithExpiredToken" finished-at="2024-10-31T12:36:33 IST" duration-ms="2679" status="PASS">
+        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T13:42:11 IST" name="ShouldBeAbleToUpdatePlaylist" finished-at="2024-10-31T13:42:14 IST" duration-ms="2692" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ShouldNotBeAbleToCreatePlaylistWithExpiredToken -->
-      </class> <!-- spotify.oauth2.tests.PlaylistTests -->
+        </test-method> <!-- ShouldBeAbleToUpdatePlaylist -->
+      </class> <!-- com.spotify.oauth2.tests.PlaylistTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
