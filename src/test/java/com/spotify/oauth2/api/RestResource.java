@@ -2,9 +2,6 @@ package com.spotify.oauth2.api;
 
 import static io.restassured.RestAssured.given;
 
-import com.spotify.oauth2.api.SpecBuilder;
-import com.spotify.oauth2.pojo.Playlist;
-
 import io.restassured.response.Response;
 
 public class RestResource {
