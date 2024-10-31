@@ -12,7 +12,7 @@ public class SpecBuilder {
 	public static RequestSpecification getRequestspec() {
 		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder().
 				setBaseUri("https://api.spotify.com").
-				setBasePath("/v1").
+				setBasePath(Route.BASE_PATH).
 				setContentType(ContentType.JSON).log(LogDetail.ALL);
 
 			return requestSpecBuilder.build();

@@ -1,6 +1,7 @@
 package com.spotify.oauth2.api.applicationApi;
-
+import static com.spotify.oauth2.api.Route.*;
 import com.spotify.oauth2.api.RestResource;
+
 import com.spotify.oauth2.api.TokenManager;
 import com.spotify.oauth2.pojo.Playlist;
 
@@ -12,21 +13,21 @@ public class PlaylistApi {
 	//static String accessToken= TokenManager.getToken();
 	
 	public static Response post(Playlist requestPlaylist) {
-		return RestResource.post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists",TokenManager.getToken() , requestPlaylist);
+		return RestResource.post(USERS+"/31riagxrmqgrxbxp3og5lon5zvvm"+PLAYLISTS,TokenManager.getToken() , requestPlaylist);
 	}
 	
 	public static Response post(String token,Playlist requestPlaylist) {
 		
-		return RestResource.post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists", token, requestPlaylist);
+		return RestResource.post(USERS+"/31riagxrmqgrxbxp3og5lon5zvvm"+PLAYLISTS, token, requestPlaylist);
 	}
 	
 	public static Response get(String playlistId) {
 		
-		return RestResource.get("/playlists/"+playlistId,TokenManager.getToken());
+		return RestResource.get(PLAYLISTS+"/"+playlistId,TokenManager.getToken());
 	}
 	
 	public static Response update(String playlistId,Playlist requestPlaylist) {
-		return RestResource.update("/playlists/"+playlistId,TokenManager.getToken(), requestPlaylist);
+		return RestResource.update(PLAYLISTS+"/"+playlistId,TokenManager.getToken(), requestPlaylist);
 	}
 	
 
