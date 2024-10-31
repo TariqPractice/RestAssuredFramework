@@ -79,4 +79,44 @@ public class PlaylistTests {
 				assertThat().
 				statusCode(200);
 	}
+	
+	//Negative test cases
+	@Test
+	public void ShouldNotBeAbleToCreatePlaylistWithoutName() {
+		String payload ="{\r\n"
+				+ "    \"name\": \"\",\r\n"							//removed name from here
+				+ "    \"description\": \"New playlist description\",\r\n"
+				+ "    \"public\": false\r\n"
+				+ "}";
+		
+		given(requestSpecification).
+				body(payload).
+		when().post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists").
+		then().spec(responseSpecification).
+				assertThat().
+				statusCode(400).body("error.status", equalTo(400),
+						"error.message",equalTo("Missing required field: name"));
+	}
+
+	@Test
+	public void ShouldNotBeAbleToCreatePlaylistWithExpiredToken() {
+		String payload ="{\r\n"
+				+ "    \"name\": \"New Playlist\",\r\n"						
+				+ "    \"description\": \"New playlist description\",\r\n"
+				+ "    \"public\": false\r\n"
+				+ "}";
+		
+		given().
+				baseUri("https://api.spotify.com").
+				basePath("/v1").
+				header("Authorization", "Bearer "+"dummyvalue12345").
+				contentType(ContentType.JSON).
+				log().all().
+				body(payload).
+		when().post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists").
+		then().spec(responseSpecification).
+				assertThat().
+				statusCode(401).body("error.status", equalTo(401),
+						"error.message",equalTo("Invalid access token"));
+	}
 }
