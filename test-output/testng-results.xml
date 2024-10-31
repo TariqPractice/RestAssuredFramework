@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-31T13:42:10 IST" name="Default suite" finished-at="2024-10-31T13:42:14 IST" duration-ms="3534">
+  <suite started-at="2024-10-31T13:47:48 IST" name="Default suite" finished-at="2024-10-31T13:47:52 IST" duration-ms="3347">
     <groups>
     </groups>
-    <test started-at="2024-10-31T13:42:10 IST" name="Default test" finished-at="2024-10-31T13:42:14 IST" duration-ms="3534">
+    <test started-at="2024-10-31T13:47:48 IST" name="Default test" finished-at="2024-10-31T13:47:52 IST" duration-ms="3347">
       <class name="com.spotify.oauth2.tests.PlaylistTests">
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T13:42:10 IST" name="beforeClass" finished-at="2024-10-31T13:42:11 IST" duration-ms="786" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T13:47:48 IST" name="beforeClass" finished-at="2024-10-31T13:47:49 IST" duration-ms="830" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T13:42:11 IST" name="ShouldBeAbleToUpdatePlaylist" finished-at="2024-10-31T13:42:14 IST" duration-ms="2692" status="PASS">
+        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@1a75e76a]" started-at="2024-10-31T13:47:49 IST" name="ShouldBeAbleToUpdatePlaylist" finished-at="2024-10-31T13:47:52 IST" duration-ms="2452" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToUpdatePlaylist -->

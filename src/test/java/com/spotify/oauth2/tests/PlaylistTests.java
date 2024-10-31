@@ -84,11 +84,11 @@ public class PlaylistTests {
 	
 	@Test
 	public void ShouldBeAbleToUpdatePlaylist() {
-
-		Playlist requestPlaylist = new Playlist();
-		requestPlaylist.setName("New Playlist");
-		requestPlaylist.setDescription("New playlist description");
-		requestPlaylist.setPublic(false);
+//builder pattern created for pojo
+		Playlist requestPlaylist = new Playlist().
+				setName("New Playlist").
+				setDescription("New playlist description").
+				setPublic(false);
 		
 		
 		given(requestSpecification).
