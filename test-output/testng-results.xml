@@ -2,28 +2,28 @@
 <testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-31T16:02:28 IST" name="Default suite" finished-at="2024-10-31T16:02:32 IST" duration-ms="3401">
+  <suite started-at="2024-10-31T16:57:27 IST" name="Default suite" finished-at="2024-10-31T16:57:33 IST" duration-ms="5367">
     <groups>
     </groups>
-    <test started-at="2024-10-31T16:02:28 IST" name="Default test" finished-at="2024-10-31T16:02:32 IST" duration-ms="3401">
+    <test started-at="2024-10-31T16:57:27 IST" name="Default test" finished-at="2024-10-31T16:57:33 IST" duration-ms="5367">
       <class name="com.spotify.oauth2.tests.PlaylistTests">
-        <test-method signature="ShouldBeAbleToCreatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:02:28 IST" name="ShouldBeAbleToCreatePlaylist" finished-at="2024-10-31T16:02:31 IST" duration-ms="2461" status="PASS">
+        <test-method signature="ShouldBeAbleToCreatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:57:27 IST" name="ShouldBeAbleToCreatePlaylist" finished-at="2024-10-31T16:57:31 IST" duration-ms="3550" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToCreatePlaylist -->
-        <test-method signature="ShouldBeAbleToGetPlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:02:31 IST" name="ShouldBeAbleToGetPlaylist" finished-at="2024-10-31T16:02:31 IST" duration-ms="321" status="PASS">
+        <test-method signature="ShouldBeAbleToGetPlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:57:31 IST" name="ShouldBeAbleToGetPlaylist" finished-at="2024-10-31T16:57:31 IST" duration-ms="557" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToGetPlaylist -->
-        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:02:31 IST" name="ShouldBeAbleToUpdatePlaylist" finished-at="2024-10-31T16:02:31 IST" duration-ms="233" status="PASS">
+        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:57:31 IST" name="ShouldBeAbleToUpdatePlaylist" finished-at="2024-10-31T16:57:32 IST" duration-ms="413" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToUpdatePlaylist -->
-        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithExpiredToken()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:02:31 IST" name="ShouldNotBeAbleToCreatePlaylistWithExpiredToken" finished-at="2024-10-31T16:02:31 IST" duration-ms="165" status="PASS">
+        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithExpiredToken()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:57:32 IST" name="ShouldNotBeAbleToCreatePlaylistWithExpiredToken" finished-at="2024-10-31T16:57:32 IST" duration-ms="423" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldNotBeAbleToCreatePlaylistWithExpiredToken -->
-        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithoutName()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:02:31 IST" name="ShouldNotBeAbleToCreatePlaylistWithoutName" finished-at="2024-10-31T16:02:32 IST" duration-ms="174" status="PASS">
+        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithoutName()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@449a4f23]" started-at="2024-10-31T16:57:32 IST" name="ShouldNotBeAbleToCreatePlaylistWithoutName" finished-at="2024-10-31T16:57:33 IST" duration-ms="380" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldNotBeAbleToCreatePlaylistWithoutName -->
