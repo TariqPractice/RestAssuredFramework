@@ -20,11 +20,8 @@ public class RestResource {
 	}
 	
 	public static Response postAccount(HashMap<String,String> formParams) {
-		return given().
-				baseUri("https://accounts.spotify.com").//since base uri is different from request specification
-				contentType(ContentType.URLENC).
-				formParams(formParams).
-				log().all().			
+		return given(SpecBuilder.getAccountRequestspec()).
+				formParams(formParams).		
 			when().
 				post("/api/token").
 			then().spec(SpecBuilder.getResponseSpec()).
