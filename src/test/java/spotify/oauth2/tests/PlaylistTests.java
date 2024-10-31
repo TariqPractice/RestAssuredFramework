@@ -51,4 +51,16 @@ public class PlaylistTests {
 						"description",equalTo("New playlist description"),
 						"public", equalTo(false));
 	}
+
+	@Test
+	public void ShouldBeAbleToGetPlaylist() {
+		
+		given(requestSpecification).
+		when().get("/playlists/1WTK34AP0Wr9rNSytCE7iC").
+		then().spec(responseSpecification).
+				assertThat().
+				statusCode(200).body("name", equalTo("Updated Playlist Name"),
+						"description",equalTo("Updated playlist description"),
+						"public", equalTo(true));
+	}
 }
