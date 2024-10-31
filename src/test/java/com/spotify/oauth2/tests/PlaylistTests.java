@@ -1,41 +1,19 @@
 package com.spotify.oauth2.tests;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.*;
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
-
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import com.spotify.oauth2.pojo.Playlist;
+
+import com.spotify.oauth2.api.SpecBuilder;
 import com.spotify.oauth2.pojo.Error;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.filter.log.LogDetail;
+import com.spotify.oauth2.pojo.Playlist;
+
 import io.restassured.http.ContentType;
-import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 
 public class PlaylistTests {
 	
-	RequestSpecification requestSpecification;
-	ResponseSpecification responseSpecification;
-	String accessToken="BQCnwp9IzzeDR1AIbycj4ZWr1OFU2BwYSUL5j8iLUCp5IkpVmBh95eeenDDtDMywFuz_ZfpKwg6hqNsdWCExa6I9jZsE9Ck3kQOr9ZT5s7tNCtVvz2wAcJsxSdusJ2ibObfLWx3WYuPDHing1f9CwOISdI4tTpPoG-pz0uRHhJLrbr7rx9DbHIpaWBJwFxbfmJXEYiJ5HcN6AmM0I-aiUUhFxbts5eVHGqj6juBBaHxFJyPpmM3bOxr666vdKxQOTtGUakR-Adimj4oEHhFuQURC";
-	
-	@BeforeClass
-	public void beforeClass() {
-		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder().
-									setBaseUri("https://api.spotify.com").
-									setBasePath("/v1").
-									addHeader("Authorization", "Bearer "+accessToken).
-									setContentType(ContentType.JSON).log(LogDetail.ALL);
-		requestSpecification = requestSpecBuilder.build();
-		
-		ResponseSpecBuilder responseSpecBuilder = new ResponseSpecBuilder().
-									log(LogDetail.ALL);
-		responseSpecification = responseSpecBuilder.build();
-	}
-
 	@Test
 	public void ShouldBeAbleToCreatePlaylist() {
 		
@@ -44,10 +22,10 @@ public class PlaylistTests {
 		requestPlaylist.setDescription("New playlist description");
 		requestPlaylist.setPublic(false);
 		
-		Playlist responsePlaylist= given(requestSpecification).
+		Playlist responsePlaylist= given(SpecBuilder.getRequestspec()).
 				body(requestPlaylist).
 		when().post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists").
-		then().spec(responseSpecification).
+		then().spec(SpecBuilder.getResponseSpec()).
 				assertThat().
 				statusCode(201).
 				extract().
@@ -67,9 +45,9 @@ public class PlaylistTests {
 		requestPlaylist.setDescription("Updated playlist description");
 		requestPlaylist.setPublic(true);
 
-		Playlist responsePlaylist = given(requestSpecification).
+		Playlist responsePlaylist = given(SpecBuilder.getRequestspec()).
 		when().get("/playlists/1WTK34AP0Wr9rNSytCE7iC").
-		then().spec(responseSpecification).
+		then().spec(SpecBuilder.getResponseSpec()).
 				assertThat().
 				statusCode(200).
 				extract().
@@ -91,11 +69,11 @@ public class PlaylistTests {
 				setPublic(false);
 		
 		
-		given(requestSpecification).
+		given(SpecBuilder.getRequestspec()).
 			body(requestPlaylist).
 		when().
 			put("/playlists/2p7cquNGGq2UXNNL2BWxBQ").
-		then().spec(responseSpecification).
+		then().spec(SpecBuilder.getResponseSpec()).
 				assertThat().
 				statusCode(200);
 	}
@@ -109,10 +87,10 @@ public class PlaylistTests {
 		requestPlaylist.setDescription("New playlist description");
 		requestPlaylist.setPublic(false);
 		
-		Error error= given(requestSpecification).
+		Error error= given(SpecBuilder.getRequestspec()).
 				body(requestPlaylist).
 		when().post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists").
-		then().spec(responseSpecification).
+		then().spec(SpecBuilder.getResponseSpec()).
 				assertThat().
 				statusCode(400).extract().response().as(com.spotify.oauth2.pojo.Error.class);
 				
@@ -136,7 +114,7 @@ public class PlaylistTests {
 				log().all().
 				body(requestPlaylist).
 		when().post("/users/31riagxrmqgrxbxp3og5lon5zvvm/playlists").
-		then().spec(responseSpecification).
+		then().spec(SpecBuilder.getResponseSpec()).
 				assertThat().
 				statusCode(401).extract().response().as(Error.class);
 
