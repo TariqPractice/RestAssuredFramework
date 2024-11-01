@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import com.spotify.oauth2.pojo.Error;
 import com.spotify.oauth2.pojo.Playlist;
+import com.spotify.oauth2.utils.DataLoader;
 
 import io.restassured.response.Response;
 
@@ -40,7 +41,7 @@ public class PlaylistTests {
 		requestPlaylist.setDescription("Updated playlist description");
 		requestPlaylist.setPublic(true);
 		
-		Response response= get("1WTK34AP0Wr9rNSytCE7iC");
+		Response response= get(DataLoader.getInstance().getGetPlaylistId());
 		assertThat(response.getStatusCode(),equalTo(200));
 		
 		Playlist responsePlaylist= response.as(Playlist.class);
@@ -59,7 +60,7 @@ public class PlaylistTests {
 				setDescription("New playlist description").
 				setPublic(false);
 		
-		Response response= update("2p7cquNGGq2UXNNL2BWxBQ",requestPlaylist);
+		Response response= update(DataLoader.getInstance().getUpdatePlaylistId(),requestPlaylist);
 		assertThat(response.getStatusCode(),equalTo(200));
 
 	}

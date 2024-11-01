@@ -5,6 +5,8 @@ import static io.restassured.RestAssured.given;
 import java.time.Instant;
 import java.util.HashMap;
 
+import com.spotify.oauth2.utils.ConfigLoader;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
@@ -37,10 +39,15 @@ public class TokenManager {
 	
 	private static Response renewToken() {
 		HashMap<String,String> formParams= new HashMap<String,String>();
-		formParams.put("client_id", "a67da5d057d84f4d91e8fe5dc057977d");
-		formParams.put("client_secret", "c5f02866a18b4b4ab353006308b0ced6");
-		formParams.put("grant_type", "refresh_token");
-		formParams.put("refresh_token", "AQCihp1wbRnAQTWvt2CW4QZHUjfHgAxQuo0dsPHa7ATR9siu0M8tmVn__E_SvbpRQA6i5NGN4JCyH5OlhsteNR0Xal1lAI7OSXVbrmNR4xIE1zL7Ln93F3gThw6w527OdWw");
+//		formParams.put("client_id", "a67da5d057d84f4d91e8fe5dc057977d");
+//		formParams.put("client_secret", "c5f02866a18b4b4ab353006308b0ced6");
+//		formParams.put("grant_type", "refresh_token");
+//		formParams.put("refresh_token", "AQCihp1wbRnAQTWvt2CW4QZHUjfHgAxQuo0dsPHa7ATR9siu0M8tmVn__E_SvbpRQA6i5NGN4JCyH5OlhsteNR0Xal1lAI7OSXVbrmNR4xIE1zL7Ln93F3gThw6w527OdWw");
+		
+		formParams.put("client_id", ConfigLoader.getInstance().getClientId());
+		formParams.put("client_secret", ConfigLoader.getInstance().getClientSecret());
+		formParams.put("grant_type", ConfigLoader.getInstance().getGrantType());
+		formParams.put("refresh_token", ConfigLoader.getInstance().getRefreshToken());
 		
 		Response response= RestResource.postAccount(formParams);
 		
