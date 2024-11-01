@@ -13,10 +13,23 @@ import com.spotify.oauth2.pojo.Playlist;
 import com.spotify.oauth2.utils.DataLoader;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Issue;
+import io.qameta.allure.Link;
+import io.qameta.allure.Story;
+import io.qameta.allure.TmsLink;
 import io.restassured.response.Response;
 
+@Epic("Spotify oauth2.0")
+@Feature("Playlist API")
 public class PlaylistTests {
-		
+	
+	@Story("Create a playlist story")
+	@Link("https://spotify.com")	
+	@Link(name= "allure",type= "mylink")
+	@TmsLink("12345")
+	@Issue("iss23244")
 	@Test(description = "Should be able to create a Playlist")
 	public void ShouldBeAbleToCreatePlaylist() {
 		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
@@ -49,6 +62,7 @@ public class PlaylistTests {
 	}
 	
 	//Negative test cases
+	@Story("Create a playlist story")
 	@Test(description = "Should not be able to create a Playlist without Name")
 	public void ShouldNotBeAbleToCreatePlaylistWithoutName() {
 		
@@ -60,7 +74,8 @@ public class PlaylistTests {
 		
 		assertError(error,400,"Missing required field: name");		
 	}
-
+	
+	@Story("Create a playlist story")
 	@Test(description = "Should not be able to create a Playlist with exprired Token")
 	public void ShouldNotBeAbleToCreatePlaylistWithExpiredToken() {
 		String invalidToken = "dummyvalue12345";
