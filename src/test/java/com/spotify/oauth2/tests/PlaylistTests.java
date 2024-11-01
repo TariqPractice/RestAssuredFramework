@@ -15,88 +15,86 @@ import com.spotify.oauth2.utils.DataLoader;
 import io.restassured.response.Response;
 
 public class PlaylistTests {
-	
+		
 	@Test
 	public void ShouldBeAbleToCreatePlaylist() {
-		
-		Playlist requestPlaylist = new Playlist();
-		requestPlaylist.setName("New Playlist");
-		requestPlaylist.setDescription("New playlist description");
-		requestPlaylist.setPublic(false);
+		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
 		
 		Response response= post(requestPlaylist);
-		assertThat(response.getStatusCode(),equalTo(201));
+		assertStatusCode(response.getStatusCode(),201);
 		Playlist responsePlaylist = response.as(Playlist.class);
 		
-		assertThat(responsePlaylist.getName(),equalTo(requestPlaylist.getName()));
-		assertThat(responsePlaylist.getDescription(),equalTo(requestPlaylist.getDescription()));
-		assertThat(responsePlaylist.getPublic(),equalTo(requestPlaylist.getPublic()));
+		assertPlaylistEqual(responsePlaylist, requestPlaylist);
 	}
+	
 
 	@Test
 	public void ShouldBeAbleToGetPlaylist() {
-		
-		Playlist requestPlaylist = new Playlist();
-		requestPlaylist.setName("Updated Playlist Name");
-		requestPlaylist.setDescription("Updated playlist description");
-		requestPlaylist.setPublic(true);
-		
+		Playlist requestPlaylist= PlaylistBuilder("Updated Playlist Name","Updated playlist description",true);
+				
 		Response response= get(DataLoader.getInstance().getGetPlaylistId());
-		assertThat(response.getStatusCode(),equalTo(200));
-		
-		Playlist responsePlaylist= response.as(Playlist.class);
-
-		assertThat(responsePlaylist.getName(),equalTo(requestPlaylist.getName()));
-		assertThat(responsePlaylist.getDescription(),equalTo(requestPlaylist.getDescription()));
-		assertThat(responsePlaylist.getPublic(),equalTo(requestPlaylist.getPublic()));
+		assertStatusCode(response.getStatusCode(), 200);		
+		Playlist responsePlaylist= response.as(Playlist.class);		
+		assertPlaylistEqual(responsePlaylist, requestPlaylist);
 		
 	}
 	
 	@Test
 	public void ShouldBeAbleToUpdatePlaylist() {
-//builder pattern created for pojo
-		Playlist requestPlaylist = new Playlist().
-				setName("New Playlist").
-				setDescription("New playlist description").
-				setPublic(false);
+		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
 		
 		Response response= update(DataLoader.getInstance().getUpdatePlaylistId(),requestPlaylist);
-		assertThat(response.getStatusCode(),equalTo(200));
-
+		assertStatusCode(response.getStatusCode(), 200);
 	}
 	
 	//Negative test cases
 	@Test
 	public void ShouldNotBeAbleToCreatePlaylistWithoutName() {
 		
-		Playlist requestPlaylist = new Playlist();
-		requestPlaylist.setName("");
-		requestPlaylist.setDescription("New playlist description");
-		requestPlaylist.setPublic(false);
+		Playlist requestPlaylist= PlaylistBuilder("","New playlist description",false);
 		
 		Response response = post(requestPlaylist);
-		assertThat(response.getStatusCode(),equalTo(400));
-		
+		assertStatusCode(response.getStatusCode(), 400);		
 		Error error= response.as(com.spotify.oauth2.pojo.Error.class);
-				
-		assertThat(error.getError().getStatus(),equalTo(400));
-		assertThat(error.getError().getMessage(),equalTo("Missing required field: name"));
+		
+		assertError(error,400,"Missing required field: name");		
 	}
 
 	@Test
 	public void ShouldNotBeAbleToCreatePlaylistWithExpiredToken() {
 		String invalidToken = "dummyvalue12345";
 		
-		Playlist requestPlaylist = new Playlist();
-		requestPlaylist.setName("New Playlist");
-		requestPlaylist.setDescription("New playlist description");
-		requestPlaylist.setPublic(false);
+		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
 		
 		Response response= post(invalidToken,requestPlaylist);
-		assertThat(response.getStatusCode(),equalTo(401));
+		assertStatusCode(response.getStatusCode(), 401);
 		
 		Error error = response.as(Error.class);
 		
-		assertThat(error.getError().getMessage(),equalTo("Invalid access token"));
+		assertError(error, 401, "Invalid access token");
+	}
+	
+	public Playlist PlaylistBuilder(String name, String description, boolean _public ) {
+		
+		Playlist requestPlaylist = new Playlist().
+						setName(name).
+						setDescription(description).
+						setPublic(_public);		
+		return requestPlaylist;
+	}
+	
+	public void assertPlaylistEqual(Playlist responsePlaylist, Playlist requestPlaylist) {
+		assertThat(responsePlaylist.getName(),equalTo(requestPlaylist.getName()));
+		assertThat(responsePlaylist.getDescription(),equalTo(requestPlaylist.getDescription()));
+		assertThat(responsePlaylist.getPublic(),equalTo(requestPlaylist.getPublic()));
+	}
+	
+	public void assertStatusCode(int actualStatusCode,int expectedStatusCode) {
+		assertThat(actualStatusCode,equalTo(expectedStatusCode));
+	}
+	
+	public void assertError(Error responseError, int expectedStatusCode,String expectedMsg) {
+		assertThat(responseError.getError().getStatus(),equalTo(expectedStatusCode));
+		assertThat(responseError.getError().getMessage(),equalTo(expectedMsg));
 	}
 }
