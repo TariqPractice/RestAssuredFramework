@@ -6,6 +6,9 @@ D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\a
 D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\utils\ConfigLoader.java
 D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\pojo\Error.java
 D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\utils\PropertyUtils.java
+D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\tests\BaseTest.java
+D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\utils\FakerUtils.java
+D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\api\StatusCode.java
 D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\pojo\ExternalUrls_.java
 D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\api\Route.java
 D:\RestAssured\Omprakash\RestAssuredFramework\src\test\java\com\spotify\oauth2\pojo\Owner.java

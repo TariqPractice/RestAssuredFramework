@@ -1,13 +1,10 @@
 package com.spotify.oauth2.api;
 
-import static io.restassured.RestAssured.given;
-
 import java.time.Instant;
 import java.util.HashMap;
 
 import com.spotify.oauth2.utils.ConfigLoader;
 
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class TokenManager {
@@ -15,7 +12,7 @@ public class TokenManager {
 	private static String access_Token;
 	private static Instant expiry_time;
 	
-	public static String getToken() {
+	public synchronized static String getToken() {//to avoid rest condition in parallel execution so that another thread can wait
 		try {
 			if(access_Token == null || Instant.now().isAfter(expiry_time)) {
 				System.out.println("Renewing Token..");
