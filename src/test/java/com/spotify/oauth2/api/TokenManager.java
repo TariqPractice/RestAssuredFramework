@@ -26,7 +26,7 @@ public class TokenManager {
 			
 
 		}catch(Exception e) {
-			
+			e.printStackTrace();
 			throw new RuntimeException("ABORT!!! Failed to get token");
 		}
 		

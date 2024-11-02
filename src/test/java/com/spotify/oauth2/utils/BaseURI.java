@@ -23,8 +23,6 @@ public class BaseURI {
 		}else {
 			return Account_URI;
 		}
-
-		//DUMMY DELETE THIS		
 	}
 
 
