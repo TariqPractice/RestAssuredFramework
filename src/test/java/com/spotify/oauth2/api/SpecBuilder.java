@@ -1,5 +1,6 @@
 package com.spotify.oauth2.api;
 
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -13,7 +14,9 @@ public class SpecBuilder {
 		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder().
 				setBaseUri("https://api.spotify.com").
 				setBasePath(Route.BASE_PATH).
-				setContentType(ContentType.JSON).log(LogDetail.ALL);
+				setContentType(ContentType.JSON).
+				addFilter(new AllureRestAssured()).
+				log(LogDetail.ALL);
 
 			return requestSpecBuilder.build();
 	}
@@ -22,6 +25,7 @@ public class SpecBuilder {
 		RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder().
 				setBaseUri("https://accounts.spotify.com").
 				setContentType(ContentType.URLENC).
+				addFilter(new AllureRestAssured()).
 				log(LogDetail.ALL);
 
 			return requestSpecBuilder.build();
