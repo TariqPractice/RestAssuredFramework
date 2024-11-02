@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.spotify.oauth2.pojo.Error;
 import com.spotify.oauth2.pojo.Playlist;
 import com.spotify.oauth2.utils.DataLoader;
+import com.spotify.oauth2.utils.FakerUtils;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -33,7 +34,8 @@ public class PlaylistTests {
 	@Issue("iss23244")
 	@Test(description = "Should be able to create a Playlist")
 	public void ShouldBeAbleToCreatePlaylist() {
-		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
+//		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
+		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= post(requestPlaylist);
 		assertStatusCode(response.getStatusCode(),201);
@@ -56,7 +58,8 @@ public class PlaylistTests {
 	
 	@Test(description = "Should be able to update a Playlist")
 	public void ShouldBeAbleToUpdatePlaylist() {
-		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
+//		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
+		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= update(DataLoader.getInstance().getUpdatePlaylistId(),requestPlaylist);
 		assertStatusCode(response.getStatusCode(), 200);
@@ -67,7 +70,7 @@ public class PlaylistTests {
 	@Test(description = "Should not be able to create a Playlist without Name")
 	public void ShouldNotBeAbleToCreatePlaylistWithoutName() {
 		
-		Playlist requestPlaylist= PlaylistBuilder("","New playlist description",false);
+		Playlist requestPlaylist= PlaylistBuilder("",FakerUtils.generateDescription(),false);
 		
 		Response response = post(requestPlaylist);
 		assertStatusCode(response.getStatusCode(), 400);		
@@ -81,7 +84,8 @@ public class PlaylistTests {
 	public void ShouldNotBeAbleToCreatePlaylistWithExpiredToken() {
 		String invalidToken = "dummyvalue12345";
 		
-		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
+//		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
+		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= post(invalidToken,requestPlaylist);
 		assertStatusCode(response.getStatusCode(), 401);
