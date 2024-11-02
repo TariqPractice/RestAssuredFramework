@@ -1,29 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="3" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-02T15:04:50 IST" name="Default suite" finished-at="2024-11-02T15:04:59 IST" duration-ms="9867">
+  <suite started-at="2024-11-02T15:16:40 IST" name="Default suite" finished-at="2024-11-02T15:16:49 IST" duration-ms="8493">
     <groups>
     </groups>
-    <test started-at="2024-11-02T15:04:50 IST" name="Default test" finished-at="2024-11-02T15:04:59 IST" duration-ms="9867">
+    <test started-at="2024-11-02T15:16:40 IST" name="Default test" finished-at="2024-11-02T15:16:49 IST" duration-ms="8493">
       <class name="com.spotify.oauth2.tests.PlaylistTests">
-        <test-method signature="ShouldBeAbleToCreatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@76ddd61a]" started-at="2024-11-02T15:04:50 IST" name="ShouldBeAbleToCreatePlaylist" description="Should be able to create a Playlist" finished-at="2024-11-02T15:04:57 IST" duration-ms="7562" status="PASS">
+        <test-method signature="ShouldBeAbleToCreatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@17b6d426]" started-at="2024-11-02T15:16:40 IST" name="ShouldBeAbleToCreatePlaylist" description="Should be able to create a Playlist" finished-at="2024-11-02T15:16:47 IST" duration-ms="7079" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[
+Expected: <200>
+     but: was <201>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: 
+Expected: <200>
+     but: was <201>
+at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:6)
+at com.spotify.oauth2.tests.PlaylistTests.assertStatusCode(PlaylistTests.java:129)
+at com.spotify.oauth2.tests.PlaylistTests.ShouldBeAbleToCreatePlaylist(PlaylistTests.java:41)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToCreatePlaylist -->
-        <test-method signature="ShouldBeAbleToGetPlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@76ddd61a]" started-at="2024-11-02T15:04:57 IST" name="ShouldBeAbleToGetPlaylist" description="Should be able to get a Playlist" finished-at="2024-11-02T15:04:58 IST" duration-ms="460" status="PASS">
+        <test-method signature="ShouldBeAbleToGetPlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@17b6d426]" started-at="2024-11-02T15:16:48 IST" name="ShouldBeAbleToGetPlaylist" description="Should be able to get a Playlist" finished-at="2024-11-02T15:16:48 IST" duration-ms="405" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToGetPlaylist -->
-        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@76ddd61a]" started-at="2024-11-02T15:04:58 IST" name="ShouldBeAbleToUpdatePlaylist" description="Should be able to update a Playlist" finished-at="2024-11-02T15:04:58 IST" duration-ms="642" status="PASS">
+        <test-method signature="ShouldBeAbleToUpdatePlaylist()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@17b6d426]" started-at="2024-11-02T15:16:48 IST" name="ShouldBeAbleToUpdatePlaylist" description="Should be able to update a Playlist" finished-at="2024-11-02T15:16:48 IST" duration-ms="287" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldBeAbleToUpdatePlaylist -->
-        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithExpiredToken()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@76ddd61a]" started-at="2024-11-02T15:04:58 IST" name="ShouldNotBeAbleToCreatePlaylistWithExpiredToken" description="Should not be able to create a Playlist with exprired Token" finished-at="2024-11-02T15:04:59 IST" duration-ms="355" status="PASS">
+        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithExpiredToken()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@17b6d426]" started-at="2024-11-02T15:16:48 IST" name="ShouldNotBeAbleToCreatePlaylistWithExpiredToken" description="Should not be able to create a Playlist with exprired Token" finished-at="2024-11-02T15:16:48 IST" duration-ms="226" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldNotBeAbleToCreatePlaylistWithExpiredToken -->
-        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithoutName()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@76ddd61a]" started-at="2024-11-02T15:04:59 IST" name="ShouldNotBeAbleToCreatePlaylistWithoutName" description="Should not be able to create a Playlist without Name" finished-at="2024-11-02T15:04:59 IST" duration-ms="556" status="PASS">
+        <test-method signature="ShouldNotBeAbleToCreatePlaylistWithoutName()[pri:0, instance:com.spotify.oauth2.tests.PlaylistTests@17b6d426]" started-at="2024-11-02T15:16:48 IST" name="ShouldNotBeAbleToCreatePlaylistWithoutName" description="Should not be able to create a Playlist without Name" finished-at="2024-11-02T15:16:49 IST" duration-ms="216" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[
+Expected: <401>
+     but: was <400>]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: 
+Expected: <401>
+     but: was <400>
+at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)
+at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:6)
+at com.spotify.oauth2.tests.PlaylistTests.assertStatusCode(PlaylistTests.java:129)
+at com.spotify.oauth2.tests.PlaylistTests.ShouldNotBeAbleToCreatePlaylistWithoutName(PlaylistTests.java:75)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ShouldNotBeAbleToCreatePlaylistWithoutName -->

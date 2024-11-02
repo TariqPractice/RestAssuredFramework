@@ -35,11 +35,10 @@ public class PlaylistTests {
 	@Issue("iss23244")
 	@Test(description = "Should be able to create a Playlist")
 	public void ShouldBeAbleToCreatePlaylist() {
-//		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
 		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= post(requestPlaylist);
-		assertStatusCode(response.getStatusCode(),StatusCode.CODE_201.getCode());
+		assertStatusCode(response.getStatusCode(),StatusCode.CODE_201);
 		Playlist responsePlaylist = response.as(Playlist.class);
 			
 		assertPlaylistEqual(responsePlaylist, requestPlaylist);
@@ -51,7 +50,7 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder("Updated Playlist Name","Updated playlist description",true);
 				
 		Response response= get(DataLoader.getInstance().getGetPlaylistId());
-		assertStatusCode(response.getStatusCode(), StatusCode.CODE_200.getCode());		
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_200);		
 		Playlist responsePlaylist= response.as(Playlist.class);		
 		assertPlaylistEqual(responsePlaylist, requestPlaylist);
 		
@@ -59,11 +58,10 @@ public class PlaylistTests {
 	
 	@Test(description = "Should be able to update a Playlist")
 	public void ShouldBeAbleToUpdatePlaylist() {
-//		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
 		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= update(DataLoader.getInstance().getUpdatePlaylistId(),requestPlaylist);
-		assertStatusCode(response.getStatusCode(), StatusCode.CODE_200.getCode());
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_200);
 	}
 	
 	//Negative test cases
@@ -74,10 +72,10 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder("",FakerUtils.generateDescription(),false);
 		
 		Response response = post(requestPlaylist);
-		assertStatusCode(response.getStatusCode(), StatusCode.CODE_400.getCode());		
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_400);
 		Error error= response.as(com.spotify.oauth2.pojo.Error.class);
 		
-		assertError(error,StatusCode.CODE_400.getCode(),StatusCode.CODE_400.getMsg());		
+		assertError(error,StatusCode.CODE_400);		
 	}
 	
 	@Story("Create a playlist story")
@@ -85,15 +83,14 @@ public class PlaylistTests {
 	public void ShouldNotBeAbleToCreatePlaylistWithExpiredToken() {
 		String invalidToken = "dummyvalue12345";
 		
-//		Playlist requestPlaylist= PlaylistBuilder("New Playlist","New playlist description",false);
 		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= post(invalidToken,requestPlaylist);
-		assertStatusCode(response.getStatusCode(), StatusCode.CODE_401.getCode());
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_401);
 		
 		Error error = response.as(Error.class);
 		
-		assertError(error, StatusCode.CODE_401.getCode(), StatusCode.CODE_401.getMsg());
+		assertError(error, StatusCode.CODE_401);
 	}
 	
 	@Step
@@ -122,13 +119,25 @@ public class PlaylistTests {
 		assertThat(responsePlaylist.getDescription(),equalTo(requestPlaylist.getDescription()));
 		assertThat(responsePlaylist.get_public(),equalTo(requestPlaylist.get_public()));
 	}
+//	@Step
+//	public void assertStatusCode(int actualStatusCode,int expectedStatusCode) {
+//		assertThat(actualStatusCode,equalTo(expectedStatusCode));
+//	}
+	
 	@Step
-	public void assertStatusCode(int actualStatusCode,int expectedStatusCode) {
-		assertThat(actualStatusCode,equalTo(expectedStatusCode));
+	public void assertStatusCode(int actualStatusCode,StatusCode statusCode) {
+		assertThat(actualStatusCode,equalTo(statusCode.code));
 	}
+	
+//	@Step
+//	public void assertError(Error responseError, int expectedStatusCode,String expectedMsg) {
+//		assertThat(responseError.getError().getStatus(),equalTo(expectedStatusCode));
+//		assertThat(responseError.getError().getMessage(),equalTo(expectedMsg));
+//	}
+	
 	@Step
-	public void assertError(Error responseError, int expectedStatusCode,String expectedMsg) {
-		assertThat(responseError.getError().getStatus(),equalTo(expectedStatusCode));
-		assertThat(responseError.getError().getMessage(),equalTo(expectedMsg));
+	public void assertError(Error responseError, StatusCode statusCode) {
+		assertThat(responseError.getError().getStatus(),equalTo(statusCode.code));
+		assertThat(responseError.getError().getMessage(),equalTo(statusCode.msg));
 	}
 }
