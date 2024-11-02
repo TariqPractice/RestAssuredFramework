@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.annotations.Test;
 
+import com.spotify.oauth2.api.StatusCode;
 import com.spotify.oauth2.pojo.Error;
 import com.spotify.oauth2.pojo.Playlist;
 import com.spotify.oauth2.utils.DataLoader;
@@ -38,7 +39,7 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= post(requestPlaylist);
-		assertStatusCode(response.getStatusCode(),201);
+		assertStatusCode(response.getStatusCode(),StatusCode.CODE_201.getCode());
 		Playlist responsePlaylist = response.as(Playlist.class);
 			
 		assertPlaylistEqual(responsePlaylist, requestPlaylist);
@@ -50,7 +51,7 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder("Updated Playlist Name","Updated playlist description",true);
 				
 		Response response= get(DataLoader.getInstance().getGetPlaylistId());
-		assertStatusCode(response.getStatusCode(), 200);		
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_200.getCode());		
 		Playlist responsePlaylist= response.as(Playlist.class);		
 		assertPlaylistEqual(responsePlaylist, requestPlaylist);
 		
@@ -62,7 +63,7 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= update(DataLoader.getInstance().getUpdatePlaylistId(),requestPlaylist);
-		assertStatusCode(response.getStatusCode(), 200);
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_200.getCode());
 	}
 	
 	//Negative test cases
@@ -73,10 +74,10 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder("",FakerUtils.generateDescription(),false);
 		
 		Response response = post(requestPlaylist);
-		assertStatusCode(response.getStatusCode(), 400);		
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_400.getCode());		
 		Error error= response.as(com.spotify.oauth2.pojo.Error.class);
 		
-		assertError(error,400,"Missing required field: name");		
+		assertError(error,StatusCode.CODE_400.getCode(),StatusCode.CODE_400.getMsg());		
 	}
 	
 	@Story("Create a playlist story")
@@ -88,11 +89,11 @@ public class PlaylistTests {
 		Playlist requestPlaylist= PlaylistBuilder(FakerUtils.generateName(),FakerUtils.generateDescription(),false);
 		
 		Response response= post(invalidToken,requestPlaylist);
-		assertStatusCode(response.getStatusCode(), 401);
+		assertStatusCode(response.getStatusCode(), StatusCode.CODE_401.getCode());
 		
 		Error error = response.as(Error.class);
 		
-		assertError(error, 401, "Invalid access token");
+		assertError(error, StatusCode.CODE_401.getCode(), StatusCode.CODE_401.getMsg());
 	}
 	
 	@Step
