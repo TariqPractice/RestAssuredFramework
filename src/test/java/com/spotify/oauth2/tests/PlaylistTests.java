@@ -17,6 +17,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Issue;
 import io.qameta.allure.Link;
+import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import io.restassured.response.Response;
@@ -90,6 +91,7 @@ public class PlaylistTests {
 		assertError(error, 401, "Invalid access token");
 	}
 	
+	@Step
 	public Playlist PlaylistBuilder(String name, String description, boolean _public ) {
 		Playlist requestPlaylist = Playlist.builder().
 						name(name).
@@ -109,17 +111,17 @@ public class PlaylistTests {
 //						setPublic(_public);		
 		return requestPlaylist;
 	}
-	
+	@Step
 	public void assertPlaylistEqual(Playlist responsePlaylist, Playlist requestPlaylist) {
 		assertThat(responsePlaylist.getName(),equalTo(requestPlaylist.getName()));
 		assertThat(responsePlaylist.getDescription(),equalTo(requestPlaylist.getDescription()));
 		assertThat(responsePlaylist.get_public(),equalTo(requestPlaylist.get_public()));
 	}
-	
+	@Step
 	public void assertStatusCode(int actualStatusCode,int expectedStatusCode) {
 		assertThat(actualStatusCode,equalTo(expectedStatusCode));
 	}
-	
+	@Step
 	public void assertError(Error responseError, int expectedStatusCode,String expectedMsg) {
 		assertThat(responseError.getError().getStatus(),equalTo(expectedStatusCode));
 		assertThat(responseError.getError().getMessage(),equalTo(expectedMsg));
